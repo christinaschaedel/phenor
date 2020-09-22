@@ -80,7 +80,7 @@ CDD <- function(par, data){
   F_crit <- par[3]
 
   # create forcing/chilling rate vector
-  Rf <- data$Tmini - T_base
+  Rf <- data$Ti - T_base
   Rf[Rf > 0] <- 0
   Rf[1:t0,] <- 0
 
