@@ -94,6 +94,38 @@ CDD <- function(par, data){
   shape_model_output(data = data, doy = doy)
 }
 
+#' Chilling Degree Day (CDD) adapted from
+#' Jeong & Medvigny 2014 (Global Ecology & Biogeography)
+#' with a sigmoidal temperature response 
+
+CDDs <- <- function(par, data){
+  # exit the routine as some parameters are missing
+  if (length(par) != 4){
+    stop("model parameter(s) out of range (too many, too few)")
+  }
+
+  # extract the parameter values from the
+  # par argument for readability
+  t0 <- round(par[1])
+  b <- par[2]
+  c <- par[3
+  F_crit <- par[4]
+
+   # sigmoid temperature response
+  Rf <- 1 / (1 + exp(-b * (data$Tmini - c)))
+  Rf[1:t0,] <- 0
+           
+   # DOY of budburst criterium
+  doy <- apply(Rf,2, function(xt){
+    data$doy[which(cumsum(xt) <= F_crit)[1]]
+  })
+
+  # set export format, either a rasterLayer
+  # or a vector
+  shape_model_output(data = data, doy = doy)
+}
+
+
 #' DormPhot model as defined in
 #' Caffarra, Donnelly and Chuine 2011 (Clim. Res.)
 #' parameter ranges are taken from Basler et al. 2016
