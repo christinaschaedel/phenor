@@ -98,7 +98,7 @@ CDD <- function(par, data){
 #' Jeong & Medvigny 2014 (Global Ecology & Biogeography)
 #' with a sigmoidal temperature response 
 
-CDDs <- <- function(par, data){
+CDDs <- function(par, data){
   # exit the routine as some parameters are missing
   if (length(par) != 4){
     stop("model parameter(s) out of range (too many, too few)")
