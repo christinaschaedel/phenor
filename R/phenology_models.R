@@ -144,7 +144,7 @@ CDDP <- function(par, data){
   # forcing
   Rf <- data$Tmini - T_base
   Rf[Rf > 0] <- 0
-  Rf <- (data$(1-Li) / 24) * Rf
+  Rf <- (data$(1-Li)/ 24) * Rf
   Rf[1:t0,] <- 0
 
   # DOY of budburst criterium
