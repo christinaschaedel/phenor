@@ -108,7 +108,7 @@ CDDs <- function(par, data){
   # par argument for readability
   t0 <- round(par[1])
   b <- par[2]
-  c <- par[3
+  c <- par[3]
   F_crit <- par[4]
 
    # sigmoid temperature response
