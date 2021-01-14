@@ -167,7 +167,8 @@ CDDPm <- function(par, data){
   t0 <- round(par[1]) # int
   T_base <- par[2]
   F_crit <- par[3]
-
+  b <- par[4]
+  
   # create forcing/chilling rate vector
   # forcing
   Rf <- data$Tmini - T_base
