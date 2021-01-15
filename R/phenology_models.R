@@ -181,7 +181,7 @@ CDDPm <- function(par, data){
     
   # DOY of budburst criterium
   doy <- apply(Rf,2, function(xt){
-    data$doy[which(cumsum(xt) >= F_crit)[1]]
+    data$doy[which(abs(cumsum(xt)) >= F_crit)[1]]
   })
 
   # set export format, either a rasterLayer
