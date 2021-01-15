@@ -166,8 +166,9 @@ CDDPm <- function(par, data){
   # par argument for readability
   t0 <- round(par[1]) # int
   T_base <- par[2]
-  F_crit <- par[3]
-  b <- par[4]
+  b <- par[3]
+  F_crit <- par[4]
+
   
   # create forcing/chilling rate vector
   # forcing
