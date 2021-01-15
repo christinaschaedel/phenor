@@ -172,11 +172,10 @@ CDDPm <- function(par, data){
   
   # create forcing/chilling rate vector
   # forcing
-  Rf = b
   Rf <- data$Tmini - T_base
   Rf[Rf > 0] <- 0
   # Rf = ((24 - data$Li) / 24) * Rf
-  Rf = (1 + 0 * data$WTDi) * Rf 
+  Rf = (1 + b * data$WTDi) * Rf 
   Rf[1:t0,] <- 0
     
   # DOY of budburst criterium
