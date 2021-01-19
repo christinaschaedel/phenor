@@ -33,7 +33,7 @@ pr_fit_comparison <- function(
   models = c("LIN","TT","TTs","PTT","PTTs",
              "M1","M1s","AT","SQ","SQb","SM1",
              "SM1b","PA","PAb","PM1",
-             "PM1b","UN","UM1","SGSI","AGSI","CDD","CDDs","CDDP"),
+             "PM1b","UN","UM1","SGSI","AGSI","CDD","CDDs","CDDP","CDDPm"),
   data = phenor::phenocam_DB,
   method = "GenSA",
   control = list(max.call = 10,
