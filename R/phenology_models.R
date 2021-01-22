@@ -155,8 +155,8 @@ CDDP <- function(par, data){
   shape_model_output(data = data, doy = doy)
 }
 
-#' Chilling Degree Day with photoperiod(CDDPm) and soil moisture
-CDDPm <- function(par, data){
+#' Photoperiod with soil moisture
+PPM <- function(par, data){
   # exit the routine as some parameters are missing
   if (length(par) != 4){
     stop("model parameter(s) out of range (too many, too few)")
@@ -165,17 +165,17 @@ CDDPm <- function(par, data){
   # extract the parameter values from the
   # par argument for readability
   t0 <- round(par[1]) # int
-  T_base <- par[2]
-  b <- par[3]
-  F_crit <- par[4]
+  #T_base <- par[2]
+  b <- par[2]
+  F_crit <- par[3]
 
   
   # create forcing/chilling rate vector
   # forcing
-  Rf <- data$Tmini - T_base
-  Rf[Rf > 0] <- 0
+  # Rf <- data$Tmini - T_base
+  # Rf[Rf > 0] <- 0
   # Rf = ((24 - data$Li) / 24) * Rf
-  Rf = (1 + b * data$WTDi) * Rf 
+  Rf = (1 + b * data$WTDi) 
   Rf[1:t0,] <- 0
     
   # DOY of budburst criterium
