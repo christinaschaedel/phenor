@@ -155,8 +155,8 @@ CDDP <- function(par, data){
   shape_model_output(data = data, doy = doy)
 }
 
-#' Photoperiod with soil moisture
-PPM <- function(par, data){
+#' Chilling Degree Day with soil moisture
+CDDM <- function(par, data){
   # exit the routine as some parameters are missing
   if (length(par) != 4){
     stop("model parameter(s) out of range (too many, too few)")
@@ -165,16 +165,54 @@ PPM <- function(par, data){
   # extract the parameter values from the
   # par argument for readability
   t0 <- round(par[1]) # int
-  #T_base <- par[2]
+  T_base <- par[2]
+  b <- par[3]
+  F_crit <- par[4]
+
+  # create forcing/chilling rate vector
+  # forcing
+  Rf <- data$Tmini - T_base
+  Rf[Rf > 0] <- 0
+  # Rf = ((24 - data$Li) / 24) * Rf
+  Rf = (1 + b * data$WTDi) * Rf 
+  Rf[1:t0,] <- 0
+    
+  # DOY of budburst criterium
+  if(F_crit > 0) 
+  doy <- apply(Rf,2, function(xt){
+    data$doy[which(cumsum(xt) >= F_crit)[1]]
+  })
+  
+  if(F_crit < 0) 
+  doy <- apply(Rf,2, function(xt){
+    data$doy[which(cumsum(xt) <= F_crit)[1]]
+  })
+  
+  # doy <- apply(Rf,2, function(xt){
+  #   data$doy[which(cumsum(xt) >= F_crit)[1]]
+  # })
+
+  # set export format, either a rasterLayer
+  # or a vector
+  shape_model_output(data = data, doy = doy)
+}
+
+#' Photoperiod with soil moisture
+PPM <- function(par, data){
+  # exit the routine as some parameters are missing
+  if (length(par) != 3){
+    stop("model parameter(s) out of range (too many, too few)")
+  }
+
+  # extract the parameter values from the
+  # par argument for readability
+  t0 <- round(par[1]) # int
   b <- par[2]
   F_crit <- par[3]
 
   
   # create forcing/chilling rate vector
   # forcing
-  # Rf <- data$Tmini - T_base
-  # Rf[Rf > 0] <- 0
-  # Rf = ((24 - data$Li) / 24) * Rf
   Rf = (1 + b * data$WTDi) 
   Rf[1:t0,] <- 0
     
