@@ -211,7 +211,7 @@ PPM <- function(par, data){
   F_crit <- par[3]
 
   
-  # create forcing/chilling rate vector
+  # create moisture rate vector
   # forcing
   Rf = (1 + b * data$WTDi) 
   Rf[1:t0,] <- 0
