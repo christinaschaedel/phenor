@@ -167,10 +167,10 @@ pr_plot_comparison = function(data = NULL,
 #      "UM1","#67a9cf",
 #      "SGSI","#67a9cf",
 #      "AGSI","#67a9cf",
-      "CDD","#67a9cf",
-      "CDDs","#67a9cf",
-      "CDDP","#67a9cf",
-      "PPM","#67a9cf"
+      "CDD","black",
+      "CDDs","black",
+      "CDDP","black",
+      "PPM","black"
     ),4,2, byrow = TRUE))
   colnames(colours) = c("model","colour")
 
