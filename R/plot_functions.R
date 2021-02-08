@@ -145,28 +145,33 @@ pr_plot_comparison = function(data = NULL,
 
   # colours => ugly find solution
   colours = as.data.frame(matrix(
-    c("NULL","black",
-      "LIN","black",
-      "TT","#ef8a62",
-      "TTs","#ef8a62",
-      "PTT","#ef8a62",
-      "PTTs","#ef8a62",
-      "M1","#ef8a62",
-      "M1s","#ef8a62",
-      "AT","#67a9cf",
-      "SQ","#67a9cf",
-      "SQb","#67a9cf",
-      "SM1","#67a9cf",
-      "SM1b","#67a9cf",
-      "PA","#67a9cf",
-      "PAb","#67a9cf",
-      "PM1","#67a9cf",
-      "PM1b","#67a9cf",
-      "UN","#67a9cf",
-      "UM1","#67a9cf",
-      "SGSI","#67a9cf",
-      "AGSI","#67a9cf"
-    ),21,2, byrow = TRUE))
+    c(
+#      "NULL","black",
+#      "LIN","black",
+#      "TT","#ef8a62",
+#      "TTs","#ef8a62",
+#      "PTT","#ef8a62",
+#      "PTTs","#ef8a62",
+#      "M1","#ef8a62",
+#      "M1s","#ef8a62",
+#      "AT","#67a9cf",
+#      "SQ","#67a9cf",
+#      "SQb","#67a9cf",
+#      "SM1","#67a9cf",
+#      "SM1b","#67a9cf",
+#      "PA","#67a9cf",
+#      "PAb","#67a9cf",
+#      "PM1","#67a9cf",
+#      "PM1b","#67a9cf",
+#      "UN","#67a9cf",
+#      "UM1","#67a9cf",
+#      "SGSI","#67a9cf",
+#      "AGSI","#67a9cf",
+      "CDD","#67a9cf",
+      "CDDs","#67a9cf",
+      "CDDP","#67a9cf",
+      "PPM","#67a9cf"
+    ),4,2, byrow = TRUE))
   colnames(colours) = c("model","colour")
 
   # calculate mean / sd RMSE of all model runs
